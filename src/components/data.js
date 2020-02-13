@@ -6,7 +6,7 @@ export const todoData = [
     },
   
     {
-      name: "Lambda School",
+      name: "Cleaning",
       id: 2,
       completed: false
     }
