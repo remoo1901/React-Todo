@@ -5,9 +5,6 @@ import { todoData } from "./components/data";
 import "./components/TodoComponents/Todo.css";
 
 class App extends Component {
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
   constructor() {
     super();
 
@@ -30,12 +27,36 @@ class App extends Component {
     });
   };
 
+  addTask = taskText => {
+    const newTask = {
+      name: taskText,
+      completed: false,
+      id: Date.now()
+    };
+
+    this.setState({
+      todoData: [...this.state.todoData, newTask]
+    });
+  };
+
+  clearCompleted = e => {
+    e.preventDefault();
+    this.setState({
+      todoData: this.state.todoData.filter(item => item.completed === false)
+    });
+    console.log(this.state.todoData);
+  };
+
   render() {
     return (
       <div>
         <h1>Todo List</h1>
-        <TodoList todoData={this.state.todoData} toggleTask={this.toggleTask} />
-        <TodoForm />
+        <TodoForm addTask={this.addTask} />
+        <TodoList
+          todoData={this.state.todoData}
+          toggleTask={this.toggleTask}
+          clearCompleted={this.clearCompleted}
+        />
       </div>
     );
   }

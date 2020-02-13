@@ -7,10 +7,17 @@ const TodoList = props => {
       {props.todoData.map(task => {
         return <Todo task={task} key={task.id} toggleTask={props.toggleTask} />;
       })}
+      <button onClick={props.clearCompleted}>
+      Clear Completed
+    </button>
     </div>
   );
 };
 
 export default TodoList;
+
+
+
+
 // your components will all go in this `component` directory.
 // feel free to change this component.js into TodoList.js
