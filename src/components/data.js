@@ -2,7 +2,7 @@ export const todoData = [
     {
       name: "Cook Lunch",
       id: 1,
-      completed: false
+      completed: true
     },
   
     {
