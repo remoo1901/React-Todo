@@ -28,14 +28,15 @@ class App extends Component {
   };
 
   addTask = taskText => {
-    const newTask = {
-      name: taskText,
-      completed: false,
-      id: Date.now()
-    };
-
     this.setState({
-      todoData: [...this.state.todoData, newTask]
+      todoData: [
+        ...this.state.todoData,
+        {
+          name: taskText,
+          completed: false,
+          id: Date.now()
+        }
+      ]
     });
   };
 
@@ -50,9 +51,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <div className="header">
-        <h1>Todo List</h1>
-        <TodoForm addTask={this.addTask} />
+        <div className="header">
+          <h1>Todo List</h1>
+          <TodoForm addTask={this.addTask} />
         </div>
         <TodoList
           todoData={this.state.todoData}
